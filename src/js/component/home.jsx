@@ -1,26 +1,26 @@
 import React from "react";
+import Card from "./card.jsx";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
-const Home = () => {
+const SecondsCounter = ({seconds}) => { 
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="container-fluid d-flex justify-content-center gap-2 bg-dark p-2">
+    
+            <div className="card bg-black text-light">
+                <div className="card-body">
+                    <h5><i className="fa-regular fa-clock"></i></h5>
+                </div>
+            </div>
+
+			<Card number={Math.floor(seconds % 1000000 / 100000)}/>
+			<Card number={Math.floor(seconds % 100000 / 10000)}/>
+			<Card number={Math.floor(seconds % 10000 / 1000)}/>
+			<Card number={Math.floor(seconds % 1000 / 100)}/>
+			<Card number={Math.floor(seconds % 100 / 10)}/>
+			<Card number={seconds % 10}/>
 		</div>
 	);
 };
 
-export default Home;
+export default SecondsCounter;
